@@ -1,0 +1,249 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+
+
+
+
+
+
+{% block head_tags %}
+
+	<meta name="description" content="All about web design, computing, and programming. Read now about how computers work!" />
+	<meta name="keywords" content="Web, Design, Business, Marketing" />
+	<title>O'Grady Tech Solutions LLC | Blog</title>
+    <script> 
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('blogLink').classList.add('active');
+    });
+     </script>
+
+
+    {% block blog_head_tags %}
+
+     
+    {% endblock %}
+   
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block body %}
+
+    <style>
+
+        
+        iframe {
+            width: 100%;
+            border: 0px;
+        }
+
+        .intro {
+            padding-top: 70px !important;
+        }
+
+        .blog-head {
+            display : flex;
+            flex-direction: column;
+            align-items:center;
+        }
+        .blog-title {
+            margin-right:0px;
+        }
+        .blog-head h2 {
+            padding: 0px;
+            height: auto;
+            font-weight: 300;
+            font-size: 48px !important;
+        }
+        .dropdown-button-container {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            border-width: 1px;
+            border-color: black;
+            background-color: rgb(60, 206, 144);
+            color: white;
+            margin-left: 30px;
+
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .dropdown-button-container.active { 
+            -webkit-transform: rotate(90deg); /* Safari and Chrome */
+            -moz-transform: rotate(90deg);   /* Firefox */
+            -ms-transform: rotate(90deg);   /* IE 9 */
+            -o-transform: rotate(90deg);   /* Opera */
+            transform: rotate(90deg);
+        }
+
+        .dropdown-button-container:hover {
+            cursor: pointer;
+
+        }
+
+        .dropdown {
+            width: 40px !important; 
+            height: 40px !important;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom:2px;
+        }
+
+        .blog_dropdown {
+            max-height: 0px;
+            opacity: 0;
+            margin-top: 40px;
+            display: flex ;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            transition: max-height 0.5s ease-in-out;
+            z-index: 1;
+            width: 100%;
+
+        }
+
+        .blog_dropdown *{
+            display: none !important;
+        }
+
+        .blog_dropdown.active{
+
+            max-height: 500px; /* Adjust according to the content height */
+            opacity: 1;
+            margin-bottom: 40px;
+
+        } 
+
+        .blog_dropdown.active * {
+            display: flex !important;
+        }
+
+        .blogpost-sample-container {
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            margin-top: 20px;
+            width: 90%;
+            border: 2px solid black;
+            border-radius:6px;
+            padding: 0px;
+            transition: width 0.35s ease-in-out;
+            /*padding: 30px 30vw;*/
+        }
+
+        .blogpost-sample-container div {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .blogpost-sample-container:hover { 
+            width: 100%;
+        }
+
+
+
+        .title-bar {
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            background-color: white;
+            z-index: 10;
+        }
+
+        a {
+            color: black;
+        }
+
+        a div {
+            width: 100%;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            text-align: center;
+            margin: 18px 0px;
+            transition: margin-top 0.3s ease-in-out;
+        }
+
+        h3 {
+            padding: 0px !important;
+        }
+
+
+
+
+    </style>
+
+	<section class="section section--intro" id="intro">
+			<div class="section__content section__content--fix-width section__content--intro">
+				<div class="intro">
+			 
+                    <div class='blog-head'>
+
+
+                        <div class='title-bar'>
+                            <h2 class='blog-title'>Blogs</h2>
+
+                            <div class='dropdown-button-container active'>
+                                <h2 class='dropdown'>></h2>
+                            </div>
+                        </div>
+
+
+                        <div class='blog_dropdown active'>
+
+                            {% for post in posts %}
+
+                            <a class='post-url blogpost-sample-container' href="{{post.url}}">
+                             
+
+                                    <div>
+                                        <h3>{{post.title}}</h3>
+                                    </div>
+                                    
+                            </a>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+
+
+
+                   {% block blog_body %}
+
+                   {% endblock %}
+
+                   
+
+				</div>
+			</div>
+	</section>
+{% endblock %}
+
+
+{% block js %}
+
+{% endblock %}
+

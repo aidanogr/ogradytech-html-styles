@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=5" />
+        <meta name="author" content="Aidan O'Grady" />
+
+        {% block head_tags %}
+        {% endblock %}
+
+        <link rel="stylesheet" href="{% static 'css/swiper.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900" rel="stylesheet"> 
+        <link rel='icon' type='image/svg+xml' href="{% static 'images/favicon.svg' %}">
+        <link rel='icon' type='png' href=" {% static 'images.favicon.png' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!--ALL JAVASCRIPT MUST GO IN HEAD, USE 'block head_tags' FOR CHILD JAVASCRIPT-->
+        <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+        <script src="{% static 'js/jquery.paroller.min.js' %}"></script>
+        <script src="{% static 'js/jquery.custom.js' %}"></script>
+        <script src="{% static 'js/swiper.min.js' %}"></script>
+        <script src="{% static 'js/swiper.custom.js' %}"></script>
+        <script src="{% static 'js/menu.js' %}"></script> 
+        <script src="{% static 'js/blog.js' %}"></script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementsByClassName('header__logo-title')[0].addEventListener('click', () => {
+                    location.href = '/#intro';
+                });
+            });
+        </script>
+
+    </head>
+
+
+
+
+
+    <body>
+        <header class="header">
+		    <div class="header__content header__content--fix-width">
+			    <div class="header__logo-title">O'Grady Tech Solutions LLC</div>
+			        <nav class="header__menu">                                                                   
+				        <ul>
+					        <li><a class="header-link" href="/#intro">HOME</a></li>
+					        <li><a class="header-link" href="/#services">SERVICES</a></li>
+					        <li><a href="/#support" class="header-link">CONTACT</a></li>
+					        <li><a href='/#portfolio' class="header-link">PORTFOLIO</a></li>	
+                            <li><a href='/blog' class='header-link' id='blogLink'>BLOG</a></li>
+				        </ul>
+			        </nav> 
+		        </div>		
+            </div>
+	    </header>
+
+
+
+
+        {% block body %}
+        {% endblock %}
+
+
+
+
+        {% block js %}
+        {% endblock %}
+
+    </body>
+
+
+</html>
+

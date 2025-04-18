@@ -1,0 +1,337 @@
+<style>
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+div {
+    margin-top: 80px;
+}
+
+h1, h2, p {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+img {
+    width: 80%;
+    margin-top: 15px;
+    margin-left: 10%;
+    height: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 50px 0;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Table Header */
+th {
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+  text-align: center;
+}
+
+/* Table Data */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+/* Table Row Hover Effect */
+tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Alternating Row Colors */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+</style>
+
+<body>
+
+
+
+
+
+
+
+
+<h1>How Computers Work in 10 Minutes or Less</h1>
+
+<div>
+    <div>
+        <h2>Preface</h2>
+        <p>
+            A few years into coding I had a friend ask me "How do computers actually work?" and when I began to answer,
+            I started to realize that I actually had no idea. No amount of Python or Java could ever prepare you 
+            to answer that question. For a high level programmer, a computer is effectively
+            a black box that you communicate with.
+             About a year later, after some systems level programming and a digital logic course,
+            I think I'm ready to (vaguely) answer that question. It's worth noting that this isn't a question that can be 
+            truly answered in 10 minutes or in one article alone, but I will try to cover all of the main bases. If you are 
+            interested in diving deeper, I highly recommend <a href='https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'> Crash Course Computer Science </a>. All images in this
+            article are self made, so feel free to use them in your own projects.
+        </p>
+    </div>
+
+
+    <div>
+        <h2>Transistors</h2>
+        <p>
+           Transistors are the fundamental building block of all circuits, and therefore computers. It helps to think of them
+           like a light switch. Instead of physically flipping a switch on or off, you can apply a current to flip the switch on.
+        </p>
+        <img src="TRANSISTOR.svg">
+    </div>
+
+    <div>
+        <h2>Logic Gates</h2>
+        <p>
+        Aligning transistors in a certain way allow you to create <b>logic gates</b>.
+        </p>
+        <img src="NPNANDORNOTGATE.svg">
+        <p>
+        <b>AND</b> logic gates takes 2 inputs, and only outputs a current if both inputs have a current. 
+        </p>
+
+
+        <table>
+            <tr>
+                <th> A (input1) </th>
+                <th> B (input2) </th>
+                <th> F (output) </th> 
+            </tr>
+            <tr> 
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 0 </td>
+            </tr>
+            <tr> 
+                <td> 0 </td>
+                <td> 1 </td>
+                <td> 0 </td>
+            </tr>
+            <tr> 
+                <td> 1 </td>
+                <td> 0 </td>
+                <td> 0 </td>
+            </tr>
+            <tr> 
+                <td> 1 </td>
+                <td> 1 </td>
+                <td> 1 </td>
+            </tr>
+        </table>
+
+        <p><b>OR</b> logic gates take 2 inputs and outputs a current if at least 1 of the inputs has a current.
+        </p>
+
+
+        <table>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>F</th>
+            </tr>
+            <tr> 
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 0 </td>
+            </tr>
+            <tr> 
+                <td> 0 </td>
+                <td> 1 </td>
+                <td> 1 </td>
+            </tr>
+            <tr> 
+                <td> 1 </td>
+                <td> 0 </td>
+                <td> 1 </td>
+            </tr>
+            <tr> 
+                <td> 1 </td>
+                <td> 1 </td>
+                <td> 1 </td>
+            </tr>
+        </table> 
+        
+        <p><b>NOT</b> logic gates negate a single input. Below is the transistor cirucit and table for the gate</p>
+        <table>
+            <tr>
+                <th>
+                    A 
+                </th>
+                <th> 
+                    F 
+                </th>
+            </tr>
+            <tr>
+                <td> 
+                    0
+                </td>
+                <td> 
+                    1
+                </td>
+            </tr>
+            <tr> 
+                <td>
+                    1
+                </td>
+                <td>
+                    0
+                </td>
+            </tr>
+        </table>
+
+
+        <p>
+            There are a few more basic logic gates, but with just these 3 logic gates, we can model any circuit.
+            The process of designing a circuit is out of the scope of this article, but if you're curious you 
+            can look into <a href='https://www.elprocus.com/sum-of-products-and-product-of-sums/'>POS and SOP</a>
+        </p>
+    </div>
+
+    <div>
+        <h2> Multiplexers </h2>
+        <p> To keep it short, multiplexers are like circuit-level if (or more accurately switch/case) statements. 
+            They have select line(s), input lines, and a singular output. A simple 2 to 1 multiplexer takes 2
+            input circuits and 1 select line. <b> If the select line is zero, the output F is the result of the first 
+            input circuit. If the select line is one, the output will be the result of the second input circuit.  </b>
+        </p>
+        <img src="basicMux.svg">
+        <table>
+            <tr>
+                <th> A </th>
+                <th> B </th>
+                <th> S0 </th>
+                <th> F </th>
+            </tr>
+            <tr>
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 0 (and gate)</td>
+                <td> 0 </td>
+            </tr>
+            <tr>
+                <td> 0 </td>
+                <td> 0 </td>
+                <td> 1 (or gate)</td>
+                <td> 0 </td>
+            </tr>
+            <tr>
+                <td> 0 </td>
+                <td> 1 </td>
+                <td> 0 (and gate)</td>
+                <td> 0 </td>
+            </tr>
+            <tr>
+                <td> 0 </td>
+                <td> 1 </td>
+                <td> 1 (or gate)</td>
+                <td> 1 </td>
+            </tr>
+             <tr>
+                <td> 1 </td>
+                <td> 0 </td>
+                <td> 0 (and gate)</td>
+                <td> 0 </td>
+            </tr>
+            <tr>
+                <td> 1 </td>
+                <td> 0 </td>
+                <td> 1 (or gate)</td>
+                <td> 1 </td>
+            </tr>
+            <tr>
+                <td> 1 </td>
+                <td> 1 </td>
+                <td> 0 (and gate)</td>
+                <td> 1 </td>
+            </tr>
+            <tr>
+                <td> 1 </td>
+                <td> 1 </td>
+                <td> 1 (or gate)</td>
+                <td> 1 </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div>
+        <h2>The ALU</h2>
+
+        <p>
+           The <b>Arithmetic Logic Unit</b> is a part of any processor. Its contains lots of sub-circuits that can do basic 
+           arithmetic and logical operations. With a multiplexer, we can take
+           2 inputs and do some operation on them based on the select lines. The following example allows for 
+           selection of ADDITION, OR, AND, or XOR between 2 inputs.
+        </p>
+
+        <img src="ALU.svg">
+
+    </div>
+
+    <div>
+        <h2> Latches and Registers </h2>
+
+        <p>
+            Now that we can perform operations on numbers, we need a place to store the data recieved. Using clever
+            circuit design, we can store 1 bit at a time using <b>latches</b>.
+        </p>
+
+        <img src="DLATCH.svg">
+
+        <p>
+            This circuit allows for an input to be stored only when the 'Clk E' line is enabled. When the enable is off,
+            the last value set during a clock enable is stored in the latch (Q). If we can store a single bit in one latch,
+            we can line them up in a series called a register and store multiple bits 
+        </p>
+
+        <img src="REGISTERS.svg">
+    </div>
+
+    <div>
+        <h2> The CPU </h2>
+        <p>
+            Now that weve covered the really low level stuff, let's take a step up the abstraction chain. A basic <b>Central Processing Unit</b>
+            contains an ALU, Registers, and a Control Unit. The CPU executes <b> instructions </b> stored in memory. These instructions are 
+            what make up all of your applications, including the software you're reading this on. It's worth noting at this point 
+             that I am leaving RAM out of this article, but it's a critical part of any modern computer as registers alone dont hold enough
+             data.
+        </p>
+    </div>
+
+    <div>
+        <h2> The  GPU </h2>
+        <p>
+            The <b> Graphics Processing Unit </b> is very similar to the CPU, with a few optimizations for, you guessed it, graphics.
+            Graphics processing for video games, video rendering, etc., is extremely expensive from a processing standpoint. But there is
+            one unique aspect of it that allows us to compute it extremely fast: <b> parallelization </b>. In addition to an ALU designed 
+            specifically for graphics arithmetic, GPUs have many <b> cores </b> because arithmetic to compute 1 pixel can be done separately
+            from another pixel. For example, a GPU with 16 cores can assign pixel colors to 16 different pixels in 1 clock cycle.
+
+        </p>
+    </div>
+
+    <div>
+        <h2> Where do we go from here? </h2>
+        <p>
+            There are very noteable components left out of this article. Decoders and encoders, RAM, SSDs and permanent storage, just to name a few.
+            If you would like to gain a more complete understanding of computers, I strongly encourage you to follow the <a href='https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo'> Crash Course Computer Science </a>
+            video series. I will warn you that it may take a few watches to really understand it, but it's the most intuitive way I've seen
+            computers explained.
+        </p>
+    </div>
+
+</div>
+
+</body>

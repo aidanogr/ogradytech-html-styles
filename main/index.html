@@ -1,0 +1,457 @@
+{% extends "main/base.html" %}
+
+{%load static%}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
+{%block head_tags%}
+	<meta name="description" content="Website Design and Marketing professionals. With over 5 years experience, we will put your local business on the map." />
+	<meta name="keywords" content="Web, Design, Business, Marketing" />
+	<title>O'Grady Tech Solutions LLC | Home</title>
+<script>
+<style>
+
+</style>
+window.addEventListener('resize', () => {
+	if(window.width > 940) {
+    	const grid_items = Array.from(document.getElementById('features').getElementsByClassName('grid__item'));
+    	let max_height = 0;
+
+		// Find the maximum height of all grid items
+		grid_items.forEach((item) => {
+			let itemHeight = item.offsetHeight; // Use offsetHeight to get the actual height
+			if (max_height < itemHeight) {
+				max_height = itemHeight;
+			}
+		});
+		max_height = max_height/2 + 30;
+		// Set all grid items to the maximum height
+		grid_items.forEach((item) => {
+			item.style.height = `${max_height}px`;
+			console.log(item.style.height); // Use console.log for debugging output
+		});
+	}
+});
+
+// Optionally, call the function once when the page loads to set initial heights
+window.addEventListener('load', () => {
+	
+	if(window.innerWidth > 940) {
+    	const grid_items = Array.from(document.getElementById('features').getElementsByClassName('grid__item'));
+    	let max_height = 0;
+
+		// Find the maximum height of all grid items
+		grid_items.forEach((item) => {
+			let itemHeight = item.offsetHeight; // Use offsetHeight to get the actual height
+			if (max_height < itemHeight) {
+				max_height = itemHeight;
+			}
+		});
+		max_height = max_height/2 + 30;
+		// Set all grid items to the maximum height
+		grid_items.forEach((item) => {
+			item.style.height = `${max_height}px`;
+			console.log(item.style.height); // Use console.log for debugging output
+		});
+	}
+});
+
+
+</script>
+
+{%endblock%}
+
+{% block body %}
+	<!-- Section %-- intro -->
+	<section class="section section--intro" id="intro">
+			<div class="section__content section__content--fix-width section__content--intro">
+				<div class="intro">
+				    <div class="intro__content">
+					<div class="intro__title">Online Presence <span>Simplified</span></div>
+					<div class="intro__subtitle">Your website, social media, and advertisement all in one place</div>
+					<div class="intro__description"><a href='#support' class='btn btn--green-bg header-link'>CONTACT NOW</a></div>
+
+				    </div>	
+				</div>
+			</div>
+	</section>
+	
+	
+	
+	<!-- Section -- features -->
+	<section class="section section--features" id="features">
+			<div id="services"></div>
+			<div class="section__content section__content--fluid-width section__content--padding">
+				<div class="grid grid--4col grid--features">
+				
+					
+					<div class="grid__item">
+						<div class="grid__icon"><img src="{% static 'images/icons/icons-64/desktop-code-64.png' %}" alt="Web-Icon" title=""/></div>
+						<h3 class="grid__title">Website Design</h3>
+						<p class="grid__text">A design that represents your value. We will create a design that is easy to navigate and simple to use.</p>
+					</div>
+	
+					<div class="grid__item">
+						<div class="grid__icon"><img src="{% static 'images/icons/icons-64/profile-icon.png' %}" alt="FaceBook-Icon" title=""/></div>
+						<h3 class="grid__title">Facebook Marketing</h3>
+						<p class="grid__text">Interact with your audience. Make social media a prime source of traffic to your business and grow like you've never seen.</p>
+					</div>
+					
+						<div class="grid__item">
+						<div class="grid__icon"><img src="{% static 'images/icons/icons-64/desktop-chart-64.png' %}" alt="Graph-Icon" title=""/></div>
+						<h3 class="grid__title">SEO Optimization</h3>
+						<p class="grid__text">Put yourself out there. We will make sure that your intended audience finds you and your product.</p>
+					</div>
+
+				</div>
+			</div>
+
+			<svg class="svg-features-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+				<path d="M0,100 Q50,50 100,100 L0,100 Z" fill="#fff"/>
+			</svg>
+	</section>	
+
+
+	<!-- Section -- pricing --><!--
+	<section class="section" id="pricing">
+
+			<div class="section__content section__content--fix-width section__content--padding">
+			        <h2 class="section__title section__title--centered">About Us</h2>
+				<div class="section__description section__description--centered">
+				We believe we have created the most efficient SaaS landing page for your users. Landing page with features that will convince you to use it for your SaaS business.
+				</div>
+				
+					
+					<div class="pricing">
+						<div class="pricing__switcher switcher">
+							<div class="switcher__buttons">
+								<div class="switcher__button switcher__button--enabled">Monthly</div> 
+								<div class="switcher__button">Yearly</div>
+								<div class="switcher__border"></div>
+							</div>
+							
+						</div>
+
+					
+						<div class="pricing__plan">
+							<h3 class="pricing__title">FREE</h3>   
+							<div class="pricing__values">
+								<div class="pricing__value pricing__value--show"><span>$</span>0 <b>/ month</b></div>
+								<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>0 <b>/ yearly</b></div>
+							</div>	
+							<ul class="pricing__list">
+								<li><b>1</b> User Account</li>
+								<li><b>10</b> Team Members</li>
+								<li><b>Unlimited</b> Emails Accounts</li>	
+								<li>Set And Manage Permissions</li>
+								<li class="disabled">API &amp; extension support</li>	
+								<li class="disabled">Developer support</li>
+					 			<li class="disabled">A / B Testing</li>			
+							</ul> 
+							<a class="pricing__signup" href="">Sign up</a>
+						</div>
+						<div class="pricing__plan">
+							<h3 class="pricing__title">STARTUP</h3>       
+							<div class="pricing__values">
+								<div class="pricing__value pricing__value--show"><span>$</span>29 <b>/ month</b></div>
+								<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>320 <b>/ yearly</b></div>
+							</div>
+							<ul class="pricing__list">
+								<li><b>10</b> User Account</li>
+								<li><b>100</b> Team Members</li>
+								<li><b>Unlimited</b> Emails Accounts</li>	
+								<li>Set And Manage Permissions</li>
+								<li>API &amp; extension support</li>	
+								<li class="disabled">Developer support</li>
+					 			<li class="disabled">A / B Testing</li>			
+							</ul> 
+							<a class="pricing__signup" href="">Sign up</a> 
+						</div>
+						<div class="pricing__plan pricing__plan--popular">
+						         <div class="pricing__badge-bg"></div>
+							 <div class="pricing__badge-text">POPULAR</div>
+							<h3 class="pricing__title">PRO</h3>       
+							<div class="pricing__values">
+								<div class="pricing__value pricing__value--show"><span>$</span>49 <b>/ month</b></div>
+								<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>529 <b>/ yearly</b></div>
+							</div>
+							<ul class="pricing__list">
+								<li><b>50</b> User Account</li>
+								<li><b>500</b> Team Members</li>
+								<li><b>Unlimited</b> Emails Accounts</li>	
+								<li>Set And Manage Permis sions</li>
+								<li>API &amp; extension support</li>	
+								<li>Developer support</li>
+					 			<li class="disabled">A / B Testing</li>		
+							</ul> 
+							<a class="pricing__signup" href="">Sign up</a>
+						</div>
+						<div class="pricing__plan">
+							<h3 class="pricing__title">ULTRA</h3>       
+							<div class="pricing__values">
+								<div class="pricing__value pricing__value--show"><span>$</span>99 <b>/ month</b></div>
+								<div class="pricing__value pricing__value--hide pricing__value--hidden"><span>$</span>900 <b>/ yearly</b></div>
+							</div>
+							<ul class="pricing__list">
+								<li><b>Unlimited</b> User Account</li>
+								<li><b>Unlimited</b> Team Members</li>
+								<li><b>Unlimited</b> Emails Accounts</li>	
+								<li>Set And Manage Permissions</li>
+								<li>API &amp; extension support</li>	
+								<li>Developer support</li>
+					 			<li>A / B Testing</li>
+			
+							</ul> 
+							<a class="pricing__signup" href="">Sign up</a>
+						</div> 	
+					</div>
+				
+				<div class="clear"></div>
+			</div>
+		
+	</section>
+	-->
+
+	
+<section class="section" id='about'>
+
+	<div class='photo-full-container'>
+		<div class='photo-exclusive-container'>
+			<img src="{% static 'images/faceshot2.webp' %}" alt='Picture-of-Aidan-Ogrady'>
+		</div>
+	</div>
+
+	<div class='about-text-container'>
+		<h2>About</h2>
+
+		<p>My name is Aidan O'Grady. I am an undergraduate student at Iowa State University majoring in Computer Engineering. With over 5 years of experience, we will put your business out there, no matter your industry or location. Check out some of our completed projects!</p>
+	</div>
+
+
+</section>
+
+
+	<!-- Section -->
+	<section class="section" id="support">
+
+
+			<div class="section__content section__content--fix-width section__content--padding">
+
+				<h2 class='contact-title'>
+					Contact Now
+				</h2>
+											<p class='custom-recaptcha3-terms'>This site is protected by reCAPTCHA and the Google
+    							<a href="https://policies.google.com/privacy">Privacy Policy</a> and
+    							<a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
+				<div class='facebook--container'>
+					
+            			<div class='fb-icon--container'>
+							
+							<a href='https://www.facebook.com/ogrady.tech.solutions/' class='fa fa-facebook'  aria-label="O'Grady Tech Solutions on Facebook"></a>
+						</div>
+
+				</div>
+				<script>
+					document.addEventListener('DOMContentLoaded', () => {
+						document.getElementsByClassName('fb-icon--container')[0].addEventListener('click', () => {
+							location.href = 'https://www.facebook.com/ogrady.tech.solutions/'
+						});
+					});
+				</script>
+
+			<div class="grid grid--3col grid--support">
+
+
+
+
+					<div class='grid__item--container'>
+						<div class="grid__item grid__item--padding">
+							<h3 class="grid__title">Email</h3>
+							<p class="grid__text">Send us an email! 24 hour response time guarantee.</p>
+							<a href="mailto:aidan@ogradytech.com" class="grid__more">aidan@ogradytech.com</a>
+						</div>
+					</div>
+
+
+					<div class='grid__item--container'>
+						<div class="grid__item grid__item--padding">
+							<h3 class="grid__title">Phone</h3>
+							<p class="grid__text">Give us a call! If you cannot get a response, please email instead.</p>
+							<a href="tel:3128829609" class="grid__more">312-882-9609</a>
+						</div>
+					</div>
+
+					<div class='grid__item--container last_item'>
+						<div class="grid__item grid__item--padding messsage-container">
+							<h3 class="grid__title">Send a Message!</h3>
+							
+							<form action="{% url 'load_main' %}" method='post' id='messageForm'>
+	
+								{% csrf_token %}
+								<div class='question'>
+									<label for="email">Email or phone</label>
+									<input maxlength="45" type="text" name='email' id='email'>
+								</div>
+								<div class='question'>
+									<label for='message'>Message</label>
+									<textarea maxlength="435" name='message' id='message'></textarea> 
+									<!--<mark><h3>Messaging under construction, please use email</h3></mark> -->
+								</div>
+								<div class='question submit-container'>
+									<label for='button'></label>
+									<button class='sub g-recaptcha' type='submit' class='' id='button' data-sitekey="6LfNgtoqAAAAAI5riHarBR9DqRNfpAS4eMZQr1Gj" data-callback="onSubmit">Submit</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		
+</section>
+
+<section class='portfolio' id='portfolio'>
+	<h2>Portfolio</h2>
+	<hr>
+	
+	<div class='p-item'> 
+		<div class='activation-toggle button-active'><p>Click here to activate window!</p></div>
+		<div class='scroll-pane active'></div>
+		<h3 id='sw-builders'>Southwest Builders</h3>
+		<div class='scrollable-container'>
+			<iframe src="https://www.sw-builds.com/" scrolling='yes' title="Southwest Builders Website"></iframe>
+		</div>
+	</div>
+
+
+
+	<div class='p-item'>
+		<div class='activation-toggle button-active'><p>Click here to activate window!</p></div>
+		<div class='scroll-pane active'></div>
+		<h3 id='aggie-business-tutors'>Aggie Business Tutors</h3>
+		<div class='scrollable-container' >
+			<iframe src="https://www.aggiebusinesstutors.com" scrolling='yes' title="Aggie Business Tutors Website"></iframe>
+		</div>
+	</div>
+	
+</section>
+
+{% endblock %}
+
+{% block js %}
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("messageForm").submit();
+       }
+     </script>
+<script>
+
+
+document.addEventListener('DOMContentLoaded', () => {
+	
+	window.scrollTo(0, 0.5);
+
+	
+	const links = Array.from(document.getElementsByClassName('header-link'));
+	window.addEventListener('scroll', scroll_selector);
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
+
+// Make the event listener callback an async function
+links.forEach(item => {
+    item.addEventListener('click', async () => {
+        window.removeEventListener('scroll', scroll_selector);
+        links.forEach(lin => {
+            if (lin.classList.contains('active')) {
+                lin.classList.remove('active');
+            }
+        });
+
+        // Wait for the sleep function to resolve
+        await sleep(600);
+        window.addEventListener('scroll', scroll_selector);
+    });
+});
+
+
+
+	function scroll_selector() {
+		links.forEach( (link) => {
+			if(link.getAttribute('href').charAt(1) == '#') {
+
+				let y_closeness = document.getElementById(link.getAttribute('href').substring(2)).getBoundingClientRect().y;
+
+
+				if(-70 < y_closeness && 70 > y_closeness) {
+
+					links.forEach( (item) => {
+						if(item.classList.contains('active')) {
+							item.classList.remove('active');
+						}
+					});
+
+					link.classList.add('active')
+					
+				}
+			}
+		});
+	}
+
+
+
+
+function getElementDistanceFromTop(element) {
+    const rect = element.getBoundingClientRect();
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    return rect.top + scrollTop;
+}
+	
+    const p_items_pane = Array.from(document.getElementsByClassName('p-item'));
+
+    p_items_pane.forEach((item) => {
+		let buttons = item.getElementsByClassName('activation-toggle');
+		let panes = item.getElementsByClassName('scroll-pane');
+
+        buttons[0].addEventListener('click', () => {
+            if (panes[0].classList.contains('active')) {
+				
+				//window.onscroll = function (event) {
+				//	window.scrollTo(0, item.getElementsByTagName('iframe')[0].scrollTop);
+				//}
+				panes[0].classList.add('passive');
+                panes[0].classList.remove('active');
+				buttons[0].innerHTML = "Click here to deactivate window!";
+				buttons[0].classList.remove('button-active');
+				buttons[0].classList.add('button-passive');
+				window.scrollTo(0, getElementDistanceFromTop(item.getElementsByTagName('h3')[0]) - 100);
+				window.onscroll = function(event) {
+					window.scrollTo(0, getElementDistanceFromTop(item.getElementsByTagName('h3')[0]) - 100);
+				}
+            } else {
+				window.onscroll = null;
+                panes[0].classList.remove('passive');
+                panes[0].classList.add('active');
+				buttons[0].innerHTML = "Click here to activate window!";
+				buttons[0].classList.remove('button-passive')
+				buttons[0].classList.add('button-active');
+				
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+
+{% endblock %}

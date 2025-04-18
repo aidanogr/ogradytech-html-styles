@@ -1,0 +1,100 @@
+<!-- This base is only to host the html from blog at an endpoint -->
+{% extends 'blog/blog_base.html' %}
+
+
+
+
+{%block blog_head_tags%} 
+
+    <script>
+    
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const iframe = document.getElementById('myIframe');
+
+            iframe.onload = function() {
+                const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                const links = iframeDocument.getElementsByTagName('a');
+
+                for (let i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.location.href = this.href;
+                });
+                }
+            }
+        
+
+
+            //toggle nav off by default
+            let c = document.getElementsByClassName('dropdown-button-container')[0];
+            let t = document.getElementsByClassName('blog_dropdown')[0];
+            c.classList.toggle('active');
+            t.classList.toggle('active');
+
+            //replace link of nav to directory before (blog/some_blog instead of blog/some_other_blog/some_blog)
+
+            function removeSecondToLastDir(url) {
+                // Split the URL into scheme and path
+                let urlParts = url.match(/(https?:\/\/[^\/]+)?(\/.*)/);
+                let scheme = urlParts[1] || '';
+                let path = urlParts[2] || '';
+
+                // Remove the second-to-last directory in the path
+                let newPath = path.replace(/\/([^\/]+)\/([^\/]+)$/, '/$2');
+
+    // Reconstruct the full URL
+    return scheme + newPath;
+            }
+
+
+            let arr = Array.from(document.getElementsByClassName('post-url'));
+            arr.forEach(item => {
+                console.log(item.href);
+                item.href = removeSecondToLastDir(item.href);
+                console.log(item.href);
+            });
+
+        });
+    </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block blog_body %}
+
+
+    <style>
+        .iframe-container {
+            overflow: auto;
+
+        }
+
+        iframe { 
+            margin-top: 40px;
+        }
+        
+    </style>
+    <div id='iframe-container'>
+        <iframe id='myIframe' scrolling='no' src="{% url 'blog_post_endpoint' url=post.url %}">
+    </div>
+    
+
+{% endblock %}
+
+
+
+
+
+
+
+{% block js %}
+
+{% endblock %}
+
+
